@@ -19,9 +19,7 @@ sapply(numeric_cols, function(s) { qqnorm(census94[, s], main = s); qqline(censu
 
 # Covering everything from the second chapter
 
-
 par(mfrow=c(3, 2))
-
 plot(age ~ income, data = census94)
 plot(education_num ~ income, data = census94)
 plot(marital_status ~ income, data = census94)
@@ -29,3 +27,16 @@ plot(relationship ~ income, data = census94)
 plot(race ~ income, data = census94)
 plot(sex ~ income, data = census94)
 
+plot(age ~ hours_per_week, data = census94)
+rug(census94$hours_per_week, side = 1)
+rug(census94$age, side = 2)
+
+library("MVA")
+bvbox(census94[, c("hours_per_week", "age")], xlab = "hours_per_week", ylab = "age")
+
+hull <- with(census94, chull(age, hours_per_week))
+plot(age ~ hours_per_week, data = census94)
+with(census94, polygon(hours_per_week[hull], age[hull], density = 15, angle = 30))
+
+census94[hull, ]
+plot(age ~ hours_per_week, data = census94[hull, ])
