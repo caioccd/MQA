@@ -18,3 +18,14 @@ dist(scale(census94[1:14, numeric_cols], center = FALSE))
 sapply(numeric_cols, function(s) { qqnorm(census94[, s], main = s); qqline(census94[, s]) } )
 
 # Covering everything from the second chapter
+
+
+par(mfrow=c(3, 2))
+
+plot(age ~ income, data = census94)
+plot(education_num ~ income, data = census94)
+plot(marital_status ~ income, data = census94)
+plot(relationship ~ income, data = census94)
+plot(race ~ income, data = census94)
+plot(sex ~ income, data = census94)
+
