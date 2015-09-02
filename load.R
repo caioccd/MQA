@@ -1,6 +1,6 @@
 # Clear all
-rm(list=ls())
-graphics.off()
+#rm(list=ls())
+#graphics.off()
 
 # Create universal variables
 DATA_PATH <<- paste0(getwd(), "/data/")
